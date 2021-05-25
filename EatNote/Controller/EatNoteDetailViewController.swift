@@ -8,22 +8,44 @@
 import UIKit
 
 class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    var eatnote = EatNote()
+    
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: EatNoteDetailHeaderView!
     @IBAction func phonecall(sender: UIButton){
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+
+        // Add Call action
+        let callActionHandler = { (action:UIAlertAction!) -> Void in
+            if let phoneURL = URL(string: "tel:\(self.eatnote.phone)"){
+                if UIApplication.shared.canOpenURL(phoneURL){
+                    UIApplication.shared.open(phoneURL, options: [:], completionHandler: nil)
+                }else{
+                    let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, something error. Please retry later.", preferredStyle: .alert)
+                    alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        let callAction = UIAlertAction(title: "Call " + eatnote.phone ,style: .default, handler: callActionHandler)
+        optionMenu.addAction(callAction)
+        
+
+
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         optionMenu.addAction(cancelAction)
         
+        // Display the menu
         present(optionMenu, animated: true, completion: nil)
-        
-        
+
         
     }
     
-    var eatnote = EatNote()
+    
     
     // MARK: - View controller life cycle
     override func viewDidLoad() {

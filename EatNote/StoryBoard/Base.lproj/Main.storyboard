@@ -246,9 +246,9 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-OF-zWb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="44.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="JEf-AI-7dJ"/>
+                                                <constraint firstAttribute="width" constant="200" id="JEf-AI-7dJ"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="vGL-i7-C6W"/>
                                             </constraints>
                                             <connections>
@@ -261,7 +261,6 @@
                                         <constraint firstItem="w1R-OF-zWb" firstAttribute="top" secondItem="FIL-m7-Riu" secondAttribute="top" id="CZk-pZ-Lcx"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="2eU-hK-Ks5" secondAttribute="trailing" constant="3" id="FWo-JH-PNl"/>
                                         <constraint firstItem="w1R-OF-zWb" firstAttribute="leading" secondItem="FIL-m7-Riu" secondAttribute="leading" id="YSn-kO-ceO"/>
-                                        <constraint firstAttribute="trailing" secondItem="w1R-OF-zWb" secondAttribute="trailing" id="ZhZ-97-Wro"/>
                                         <constraint firstItem="2eU-hK-Ks5" firstAttribute="top" secondItem="FIL-m7-Riu" secondAttribute="topMargin" id="bhP-iA-arO"/>
                                         <constraint firstItem="2eU-hK-Ks5" firstAttribute="leading" secondItem="FIL-m7-Riu" secondAttribute="leadingMargin" constant="3" id="cD8-w9-Ltd"/>
                                     </constraints>
