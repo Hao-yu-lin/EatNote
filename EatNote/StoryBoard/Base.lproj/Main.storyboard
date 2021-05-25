@@ -220,8 +220,59 @@
                                     <outlet property="nameTextLabel" destination="lTT-E9-lk1" id="m4D-Sd-p9c"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailIconTextCell" id="9uz-VQ-gCH" customClass="EatNoteDetailIconTextCell" customModule="EatNote" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailPhoneCell" id="IDz-3q-2Fz" customClass="EatNoteDetailPhoneCell" customModule="EatNote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="425" width="414" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IDz-3q-2Fz" id="FIL-m7-Riu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2eU-hK-Ks5">
+                                            <rect key="frame" x="23" y="11" width="368" height="20"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZc-PR-TPV" userLabel="phone Image View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="XiM-ky-KmT"/>
+                                                        <constraint firstAttribute="width" constant="20" id="lF9-n8-VLP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7W9-vc-60g" userLabel="phone call Label">
+                                                    <rect key="frame" x="28" y="0.5" width="340" height="19.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-OF-zWb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="JEf-AI-7dJ"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="vGL-i7-C6W"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="phonecallWithSender:" destination="LBB-bc-PQe" eventType="touchDown" id="W3J-yF-g8o"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="w1R-OF-zWb" secondAttribute="bottom" id="2jh-gH-i6k"/>
+                                        <constraint firstItem="w1R-OF-zWb" firstAttribute="top" secondItem="FIL-m7-Riu" secondAttribute="top" id="CZk-pZ-Lcx"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2eU-hK-Ks5" secondAttribute="trailing" constant="3" id="FWo-JH-PNl"/>
+                                        <constraint firstItem="w1R-OF-zWb" firstAttribute="leading" secondItem="FIL-m7-Riu" secondAttribute="leading" id="YSn-kO-ceO"/>
+                                        <constraint firstAttribute="trailing" secondItem="w1R-OF-zWb" secondAttribute="trailing" id="ZhZ-97-Wro"/>
+                                        <constraint firstItem="2eU-hK-Ks5" firstAttribute="top" secondItem="FIL-m7-Riu" secondAttribute="topMargin" id="bhP-iA-arO"/>
+                                        <constraint firstItem="2eU-hK-Ks5" firstAttribute="leading" secondItem="FIL-m7-Riu" secondAttribute="leadingMargin" constant="3" id="cD8-w9-Ltd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="LZc-PR-TPV" id="gSs-gY-2Vv"/>
+                                    <outlet property="shortTextLabel" destination="7W9-vc-60g" id="mVz-Za-3A5"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailIconTextCell" id="9uz-VQ-gCH" customClass="EatNoteDetailIconTextCell" customModule="EatNote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="469.5" width="414" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9uz-VQ-gCH" id="f0d-Cb-Gww">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
@@ -230,7 +281,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bZm-t1-PrO">
                                             <rect key="frame" x="23" y="11" width="368" height="20.5"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GH3-ZY-G04">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GH3-ZY-G04" userLabel="address Image View">
                                                     <rect key="frame" x="0.0" y="0.5" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="0fY-Mo-FQh"/>
@@ -259,7 +310,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailTextCell" id="F5O-Ck-8CL" customClass="EatNoteDetailTextCell" customModule="EatNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="469.5" width="414" height="41"/>
+                                <rect key="frame" x="0.0" y="514" width="414" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F5O-Ck-8CL" id="mVr-oH-6zF">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
@@ -284,7 +335,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailSeparatorCell" id="VNT-0E-bBI" customClass="EatNoteDetailSeparatorCell" customModule="EatNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="510.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="555" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VNT-0E-bBI" id="LGK-ej-lqC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -321,13 +372,13 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailMapCell" rowHeight="250" id="yrm-00-Qkt" customClass="EatNoteDetailMapCell" customModule="EatNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="554.5" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="599" width="414" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yrm-00-Qkt" id="Sup-uG-JTV">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ar-vt-cdf">
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" pitchEnabled="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ar-vt-cdf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="siZ-wh-JSX"/>

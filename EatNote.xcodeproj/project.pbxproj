@@ -23,6 +23,7 @@
 		0E74646C265CEA1D00542914 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E74646B265CEA1D00542914 /* MapKit.framework */; };
 		0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */; };
 		0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */; };
+		0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */; };
 		0EF4DF70265A879000C13481 /* EatNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DF6F265A879000C13481 /* EatNote.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		0E74646B265CEA1D00542914 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailMapCell.swift; sourceTree = "<group>"; };
+		0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailPhoneCell.swift; sourceTree = "<group>"; };
 		0EF4DF6F265A879000C13481 /* EatNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */,
 				0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */,
 				0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */,
+				0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */,
 				0EF4DF70265A879000C13481 /* EatNote.swift in Sources */,
 				0E32ADD4265B924E004154C6 /* EatNoteDetailHeaderView.swift in Sources */,
+				0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */,
 				0E553708265A25630044E5F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

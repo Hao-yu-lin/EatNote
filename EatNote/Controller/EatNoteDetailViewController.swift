@@ -12,6 +12,16 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: EatNoteDetailHeaderView!
+    @IBAction func phonecall(sender: UIButton){
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        present(optionMenu, animated: true, completion: nil)
+        
+        
+        
+    }
     
     var eatnote = EatNote()
     
@@ -38,7 +48,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.navigationBar.tintColor = UIColor(red: 68, green: 86, blue: 245)
         tableView.contentInsetAdjustmentBehavior = .always
         
-        
+        // tap gesture
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,11 +78,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailIconTextCell.self), for: indexPath) as! EatNoteDetailIconTextCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailPhoneCell.self), for: indexPath) as! EatNoteDetailPhoneCell
             cell.iconImageView.image = UIImage(systemName: "phone")?.withTintColor(.black, renderingMode: .alwaysOriginal)
             cell.shortTextLabel.text = eatnote.phone
             cell.selectionStyle = .none
-            
             
             return cell
             
@@ -110,8 +119,6 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    
-
 
 
 
