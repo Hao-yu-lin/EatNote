@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -15,6 +16,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: EatNoteDetailHeaderView!
 
+    // MARK: - phone call & navigation
+    
+    // phone call
+   
 
     @IBAction func phonecall(sender: UIButton){
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
@@ -31,6 +36,8 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
                 }
             }
         }
+        
+        
         
         let callAction = UIAlertAction(title: "Call " + eatnote.phone ,style: .default, handler: callActionHandler)
         optionMenu.addAction(callAction)
@@ -52,6 +59,75 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         // Display the menu
         present(optionMenu, animated: true, completion: nil)
 
+        
+    }
+    
+    @IBAction func navigationMapApp(sender: UIButton) {
+        var lat = String()
+        var lon = String()
+        
+        var optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(self.eatnote.location + self.eatnote.address, completionHandler: {(placemarks:[CLPlacemark]!,error:Error!) in
+            if error != nil{
+                print(error!)
+                return
+            }
+            if placemarks != nil && placemarks.count > 0{
+                let placemark = placemarks[0] as CLPlacemark
+                lat = String(placemark.location?.coordinate.latitude ?? 0.0)
+                lon = String(placemark.location?.coordinate.longitude ?? 0.0)
+                print("\(lat),\(lon)")
+            }
+        })
+
+        
+        // google map
+        let GoogleMapActionHandler = { (action:UIAlertAction!) -> Void in
+
+            let url = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lon)&directionsmode=driving")
+                    
+                    if UIApplication.shared.canOpenURL(url!) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                        // 若手機沒安裝 Google Map App 則導到 App Store(id443904275 為 Google Map App 的 ID)
+                        let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id585027354")!
+                        UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
+                    }
+
+            
+        }
+        
+        let GoogleMapAction = UIAlertAction(title: "GoogleMap" ,style: .default, handler: GoogleMapActionHandler)
+        optionMenu.addAction(GoogleMapAction)
+        
+        let AppleMapActionHandler = { (action: UIAlertAction!) -> Void in
+           
+            let AppleMapURL = URL(string: "http://maps.apple.com/?daddr=\(lat),\(lon)&dirflg=d")
+                
+                if UIApplication.shared.canOpenURL(AppleMapURL!){
+                   
+                    UIApplication.shared.open(AppleMapURL!, options: [:], completionHandler: nil)
+                  
+                }else{
+                    // 若手機沒安裝 Google Map App 則導到 App Store(id915056765 為 apple Map App 的 ID)
+                    let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id915056765")!
+                   
+                    UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
+                 
+                }
+            
+        }
+        
+        let AppleMapAction = UIAlertAction(title: "AppleMap" ,style: .default, handler:AppleMapActionHandler)
+        optionMenu.addAction(AppleMapAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        // Display the menu
+        present(optionMenu, animated: true, completion: nil)
         
     }
     
