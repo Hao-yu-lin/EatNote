@@ -17,9 +17,10 @@ class EatNote{
     var isVisited: Bool
     var phone: String
     var description: String
+    var rating: String
    
     
-    init(name: String, type: String, location: String, address: String, image: String, isVisited: Bool, phone: String, description: String) {
+    init(name: String, type: String, location: String, address: String, image: String, isVisited: Bool, phone: String, description: String, rating: String = "") {
         self.name = name
         self.type = type
         self.location = location
@@ -28,6 +29,7 @@ class EatNote{
         self.isVisited = isVisited
         self.phone = phone
         self.description = description
+        self.rating = rating
         
 
     }

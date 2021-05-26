@@ -9,7 +9,13 @@ import UIKit
 
 class EatNoteDetailNameCell: UITableViewCell {
     
-    @IBOutlet var nameTextLabel: UILabel!
+    @IBOutlet var nameTextLabel: UILabel!{
+        didSet{
+                    nameTextLabel.numberOfLines = 0
+                }
+    }
+    
+
 
     override func awakeFromNib() {
         super.awakeFromNib()

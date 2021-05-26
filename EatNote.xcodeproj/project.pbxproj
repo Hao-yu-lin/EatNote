@@ -24,6 +24,7 @@
 		0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */; };
 		0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */; };
 		0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */; };
+		0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */; };
 		0EF4DF70265A879000C13481 /* EatNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DF6F265A879000C13481 /* EatNote.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailMapCell.swift; sourceTree = "<group>"; };
 		0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailPhoneCell.swift; sourceTree = "<group>"; };
+		0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		0EF4DF6F265A879000C13481 /* EatNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				0E553705265A25630044E5F3 /* AppDelegate.swift */,
 				0E553707265A25630044E5F3 /* SceneDelegate.swift */,
 				0E55370E265A25650044E5F3 /* Assets.xcassets */,
+				0EB9D87A265DE8F9006739A5 /* New Group */,
 				0E553713265A25660044E5F3 /* Info.plist */,
 			);
 			path = EatNote;
@@ -109,6 +112,7 @@
 			children = (
 				0E55371C265A271B0044E5F3 /* EatNoteTableViewController.swift */,
 				0E32ADDC265B9450004154C6 /* EatNoteDetailViewController.swift */,
+				0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +154,13 @@
 				0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		0EB9D87A265DE8F9006739A5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		0EF4DF6E265A873D00C13481 /* Model */ = {
@@ -233,6 +244,7 @@
 				0E746460265BC88000542914 /* EatNoteDetailTextCell.swift in Sources */,
 				0E32ADDD265B9450004154C6 /* EatNoteDetailViewController.swift in Sources */,
 				0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */,
+				0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */,
 				0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */,
 				0E553722265A3EA30044E5F3 /* EatNoteTableViewCell.swift in Sources */,
 				0E553706265A25630044E5F3 /* AppDelegate.swift in Sources */,

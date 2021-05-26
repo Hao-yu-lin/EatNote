@@ -14,6 +14,8 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: EatNoteDetailHeaderView!
+
+
     @IBAction func phonecall(sender: UIButton){
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
 
@@ -33,8 +35,16 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         let callAction = UIAlertAction(title: "Call " + eatnote.phone ,style: .default, handler: callActionHandler)
         optionMenu.addAction(callAction)
         
-
-
+        let shareAction = UIAlertAction(title: "Share phone number", style: .default, handler: {
+            (action:UIAlertAction!) -> Void in
+            let defaultText = "Share: " + self.eatnote.name + self.eatnote.phone
+            
+            let activityController: UIActivityViewController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            self.present(activityController, animated: true, completion: nil)
+        })
+       
+        optionMenu.addAction(shareAction)
+       
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         optionMenu.addAction(cancelAction)
@@ -141,7 +151,39 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRate" {
+            let destinationController = segue.destination as! RateViewController
+            destinationController.eatnote = eatnote
+        }
+    }
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func rateEatNote(segue: UIStoryboardSegue){
+        dismiss(animated: true, completion: {
+            if let rating = segue.identifier {
+                self.eatnote.rating = rating
 
+                self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+                self.headerView.ratingImageView.transform = scaleTransform
+                self.headerView.ratingImageView.alpha = 0
+                
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations: {
+                    self.headerView.ratingImageView.transform = .identity
+                    self.headerView.ratingImageView.alpha = 1
+                }, completion: nil)
+            }
+        })
+    }
+    
 
 
 }

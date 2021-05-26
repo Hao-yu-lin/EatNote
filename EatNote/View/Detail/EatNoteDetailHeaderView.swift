@@ -27,4 +27,6 @@ class EatNoteDetailHeaderView: UIView {
             headerImageView.layer.masksToBounds = true
         }
     }
+    
+    @IBOutlet var ratingImageView: UIImageView!
 }
