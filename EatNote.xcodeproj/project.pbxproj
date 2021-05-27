@@ -16,7 +16,7 @@
 		0E553712265A25650044E5F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E553710265A25650044E5F3 /* LaunchScreen.storyboard */; };
 		0E55371D265A271B0044E5F3 /* EatNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E55371C265A271B0044E5F3 /* EatNoteTableViewController.swift */; };
 		0E553722265A3EA30044E5F3 /* EatNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E553721265A3EA30044E5F3 /* EatNoteTableViewCell.swift */; };
-		0E74645D265BC6D400542914 /* EatNoteDetailIconTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74645C265BC6D400542914 /* EatNoteDetailIconTextCell.swift */; };
+		0E74645D265BC6D400542914 /* EatNoteDetailIAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74645C265BC6D400542914 /* EatNoteDetailIAddressCell.swift */; };
 		0E746460265BC88000542914 /* EatNoteDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74645F265BC88000542914 /* EatNoteDetailTextCell.swift */; };
 		0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */; };
 		0E746468265CE29300542914 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746467265CE29300542914 /* UIColor+Ext.swift */; };
@@ -26,6 +26,8 @@
 		0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */; };
 		0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */; };
 		0EF4DF70265A879000C13481 /* EatNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DF6F265A879000C13481 /* EatNote.swift */; };
+		0EFF763A265F74130043F49D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF7639265F74130043F49D /* RoundedTextField.swift */; };
+		0EFF763D265F7EC30043F49D /* NewEatNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +42,7 @@
 		0E553713265A25660044E5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E55371C265A271B0044E5F3 /* EatNoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteTableViewController.swift; sourceTree = "<group>"; };
 		0E553721265A3EA30044E5F3 /* EatNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteTableViewCell.swift; sourceTree = "<group>"; };
-		0E74645C265BC6D400542914 /* EatNoteDetailIconTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailIconTextCell.swift; sourceTree = "<group>"; };
+		0E74645C265BC6D400542914 /* EatNoteDetailIAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailIAddressCell.swift; sourceTree = "<group>"; };
 		0E74645F265BC88000542914 /* EatNoteDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailTextCell.swift; sourceTree = "<group>"; };
 		0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailNameCell.swift; sourceTree = "<group>"; };
 		0E746467265CE29300542914 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailPhoneCell.swift; sourceTree = "<group>"; };
 		0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		0EF4DF6F265A879000C13481 /* EatNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNote.swift; sourceTree = "<group>"; };
+		0EFF7639265F74130043F49D /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEatNoteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,6 @@
 				0E553705265A25630044E5F3 /* AppDelegate.swift */,
 				0E553707265A25630044E5F3 /* SceneDelegate.swift */,
 				0E55370E265A25650044E5F3 /* Assets.xcassets */,
-				0EB9D87A265DE8F9006739A5 /* New Group */,
 				0E553713265A25660044E5F3 /* Info.plist */,
 			);
 			path = EatNote;
@@ -113,6 +116,7 @@
 				0E55371C265A271B0044E5F3 /* EatNoteTableViewController.swift */,
 				0E32ADDC265B9450004154C6 /* EatNoteDetailViewController.swift */,
 				0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */,
+				0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -122,6 +126,7 @@
 			children = (
 				0E553721265A3EA30044E5F3 /* EatNoteTableViewCell.swift */,
 				0E74647D265D442100542914 /* Detail */,
+				0EFF7639265F74130043F49D /* RoundedTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				0E32ADD3265B924E004154C6 /* EatNoteDetailHeaderView.swift */,
-				0E74645C265BC6D400542914 /* EatNoteDetailIconTextCell.swift */,
+				0E74645C265BC6D400542914 /* EatNoteDetailIAddressCell.swift */,
 				0E74645F265BC88000542914 /* EatNoteDetailTextCell.swift */,
 				0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */,
 				0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */,
@@ -154,13 +159,6 @@
 				0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		0EB9D87A265DE8F9006739A5 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		0EF4DF6E265A873D00C13481 /* Model */ = {
@@ -246,12 +244,14 @@
 				0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */,
 				0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */,
 				0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */,
+				0EFF763D265F7EC30043F49D /* NewEatNoteController.swift in Sources */,
 				0E553722265A3EA30044E5F3 /* EatNoteTableViewCell.swift in Sources */,
 				0E553706265A25630044E5F3 /* AppDelegate.swift in Sources */,
 				0E746468265CE29300542914 /* UIColor+Ext.swift in Sources */,
-				0E74645D265BC6D400542914 /* EatNoteDetailIconTextCell.swift in Sources */,
+				0E74645D265BC6D400542914 /* EatNoteDetailIAddressCell.swift in Sources */,
 				0E55371D265A271B0044E5F3 /* EatNoteTableViewController.swift in Sources */,
 				0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */,
+				0EFF763A265F74130043F49D /* RoundedTextField.swift in Sources */,
 				0EF4DF70265A879000C13481 /* EatNote.swift in Sources */,
 				0E32ADD4265B924E004154C6 /* EatNoteDetailHeaderView.swift in Sources */,
 				0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EatNoteDetailIconTextCell: UITableViewCell {
+class EatNoteDetailIAddressCell: UITableViewCell {
     
     @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var shortTextLabel: UILabel!{

@@ -39,12 +39,12 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         
         
-        let callAction = UIAlertAction(title: "Call " + eatnote.phone ,style: .default, handler: callActionHandler)
+        let callAction = UIAlertAction(title: "Call : " + eatnote.phone ,style: .default, handler: callActionHandler)
         optionMenu.addAction(callAction)
         
         let shareAction = UIAlertAction(title: "Share phone number", style: .default, handler: {
             (action:UIAlertAction!) -> Void in
-            let defaultText = "Share: " + self.eatnote.name + self.eatnote.phone
+            let defaultText = self.eatnote.name + ":" + self.eatnote.phone
             
             let activityController: UIActivityViewController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
             self.present(activityController, animated: true, completion: nil)
@@ -86,20 +86,20 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         // google map
         let GoogleMapActionHandler = { (action:UIAlertAction!) -> Void in
 
-            let url = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lon)&directionsmode=driving")
-                    
-                    if UIApplication.shared.canOpenURL(url!) {
-                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                    } else {
-                        // 若手機沒安裝 Google Map App 則導到 App Store(id443904275 為 Google Map App 的 ID)
-                        let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id585027354")!
-                        UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
-                    }
+        let url = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lon)&directionsmode=driving")
+                
+                if UIApplication.shared.canOpenURL(url!) {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                } else {
+                    // 若手機沒安裝 Google Map App 則導到 App Store(id443904275 為 Google Map App 的 ID)
+                    let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id585027354")!
+                    UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
+                }
 
             
         }
         
-        let GoogleMapAction = UIAlertAction(title: "GoogleMap" ,style: .default, handler: GoogleMapActionHandler)
+        let GoogleMapAction = UIAlertAction(title: "Navigation : GoogleMap" ,style: .default, handler: GoogleMapActionHandler)
         optionMenu.addAction(GoogleMapAction)
         
         let AppleMapActionHandler = { (action: UIAlertAction!) -> Void in
@@ -111,7 +111,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
                     UIApplication.shared.open(AppleMapURL!, options: [:], completionHandler: nil)
                   
                 }else{
-                    // 若手機沒安裝 Google Map App 則導到 App Store(id915056765 為 apple Map App 的 ID)
+                    // 若手機沒安裝 Apple Map App 則導到 App Store(id915056765 為 apple Map App 的 ID)
                     let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id915056765")!
                    
                     UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
@@ -120,8 +120,19 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             
         }
         
-        let AppleMapAction = UIAlertAction(title: "AppleMap" ,style: .default, handler:AppleMapActionHandler)
+        let AppleMapAction = UIAlertAction(title: "Navigation : AppleMap" ,style: .default, handler:AppleMapActionHandler)
         optionMenu.addAction(AppleMapAction)
+        
+        
+        let shareAction = UIAlertAction(title: "Share Address", style: .default, handler: {
+            (action:UIAlertAction!) -> Void in
+            let defaultText = self.eatnote.name + ":" + self.eatnote.location + self.eatnote.address
+            
+            let activityController: UIActivityViewController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            self.present(activityController, animated: true, completion: nil)
+        })
+       
+        optionMenu.addAction(shareAction)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         optionMenu.addAction(cancelAction)
@@ -147,7 +158,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         // Configure the table view
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
         
         
         // Configure the navigation bar
@@ -194,7 +205,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailIconTextCell.self), for: indexPath) as! EatNoteDetailIconTextCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailIAddressCell.self), for: indexPath) as! EatNoteDetailIAddressCell
             cell.iconImageView.image = UIImage(systemName: "map")?.withTintColor(.black, renderingMode: .alwaysOriginal)
             cell.shortTextLabel.text = eatnote.location + eatnote.address
             cell.selectionStyle = .none
