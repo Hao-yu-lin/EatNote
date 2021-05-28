@@ -16,11 +16,11 @@ class EatNote{
     var image: String
     var isVisited: Bool
     var phone: String
-    var description: String
+    var comment: String
     var rating: String
    
     
-    init(name: String, type: String, location: String, address: String, image: String, isVisited: Bool, phone: String, description: String, rating: String = "") {
+    init(name: String, type: String, location: String, address: String, image: String, isVisited: Bool, phone: String, comment: String, rating: String = "") {
         self.name = name
         self.type = type
         self.location = location
@@ -28,14 +28,14 @@ class EatNote{
         self.image = image
         self.isVisited = isVisited
         self.phone = phone
-        self.description = description
+        self.comment = comment
         self.rating = rating
         
 
     }
     
     convenience init() {
-        self.init(name: "", type: "", location: "", address: "", image: "", isVisited: false, phone: "", description: "")
+        self.init(name: "", type: "", location: "", address: "", image: "", isVisited: false, phone: "", comment: "")
     }
 }
 

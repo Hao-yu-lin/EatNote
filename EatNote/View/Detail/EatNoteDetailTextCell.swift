@@ -9,9 +9,9 @@ import UIKit
 
 class EatNoteDetailTextCell: UITableViewCell {
     
-    @IBOutlet var descriptionLabel: UILabel!{
+    @IBOutlet var commentLabel: UILabel!{
         didSet {
-            descriptionLabel.numberOfLines = 0
+            commentLabel.numberOfLines = 0
         }
     }
 

@@ -27,13 +27,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iuJ-b0-VH9">
-                                                    <rect key="frame" x="167" y="85" width="80" height="62"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="AIg-12-QKY"/>
-                                                        <constraint firstAttribute="width" constant="80" id="q9g-5B-jZO"/>
-                                                    </constraints>
-                                                    <imageReference key="image" image="photo" catalog="system" symbolScale="large"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iuJ-b0-VH9">
+                                                    <rect key="frame" x="195" y="107" width="24" height="17.5"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -267,12 +263,12 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="AddressTextField" destination="fxL-HH-T7a" id="PRx-En-ROR"/>
-                        <outlet property="DescriptionTextView" destination="jcV-Cm-5BG" id="rKO-nZ-jfH"/>
+                        <outlet property="CommentTextView" destination="jcV-Cm-5BG" id="MP3-py-nm2"/>
                         <outlet property="LocationTextField" destination="k8L-0c-H4o" id="hQR-8Z-yWp"/>
                         <outlet property="NameTextField" destination="Gwy-nc-aDU" id="mf0-4W-iOu"/>
                         <outlet property="PhoneTextField" destination="SKN-kb-97O" id="VaZ-aW-AaS"/>
                         <outlet property="TypeTextField" destination="fnA-eW-RuQ" id="Cu0-RB-Kq6"/>
-                        <outlet property="photoImageView" destination="iuJ-b0-VH9" id="bhL-ji-THx"/>
+                        <outlet property="photoImageView" destination="iuJ-b0-VH9" id="bPB-rS-IXn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnl-Jw-nqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -657,7 +653,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="faM-RZ-6aW" id="Bw9-fe-v3h"/>
+                                    <outlet property="commentLabel" destination="faM-RZ-6aW" id="SFg-Fp-UBB"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EatNoteDetailMapCell" id="yrm-00-Qkt" customClass="EatNoteDetailMapCell" customModule="EatNote" customModuleProvider="target">

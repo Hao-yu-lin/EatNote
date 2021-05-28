@@ -14,13 +14,15 @@ class RateViewController: UIViewController {
     @IBOutlet var closeButton: UIButton!
     
     
-    var eatnote = EatNote()
+    var eatnote: EatNoteModel!
 
     // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backgroundImageView.image = UIImage(named: eatnote.image)
+        if let eatenoteImage = eatnote.image {
+            backgroundImageView.image = UIImage(data: eatenoteImage as Data)
+        }
         
         // Applying the blur effect
         let blurEffect = UIBlurEffect(style: .dark)
@@ -50,34 +52,7 @@ class RateViewController: UIViewController {
             }, completion: nil)
         }
         
-    
-//
-//        UIView.animate(withDuration: 0.7, delay: 0.2, options: [], animations: {
-//            self.rateButtons[0].alpha = 1.0
-//            self.rateButtons[0].transform = .identity
-//        }, completion: nil)
-//
-//        UIView.animate(withDuration: 0.7, delay: 0.3, options: [], animations: {
-//            self.rateButtons[1].alpha = 1.0
-//            self.rateButtons[1].transform = .identity
-//        }, completion: nil)
-//
-//        UIView.animate(withDuration: 0.7, delay: 0.4, options: [], animations: {
-//            self.rateButtons[2].alpha = 1.0
-//            self.rateButtons[2].transform = .identity
-//        }, completion: nil)
-//
-//        UIView.animate(withDuration: 0.7, delay: 0.5, options: [], animations: {
-//            self.rateButtons[3].alpha = 1.0
-//            self.rateButtons[3].transform = .identity
-//        }, completion: nil)
-//
-//        UIView.animate(withDuration: 0.7, delay: 0.6, options: [], animations: {
-//            self.rateButtons[4].alpha = 1.0
-//            self.rateButtons[4].transform = .identity
-//        }, completion: nil)
 
-        
         
         // Animate the close button
         UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
@@ -88,14 +63,5 @@ class RateViewController: UIViewController {
 
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

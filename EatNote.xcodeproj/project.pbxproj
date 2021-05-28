@@ -27,6 +27,7 @@
 		0EF4DF70265A879000C13481 /* EatNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DF6F265A879000C13481 /* EatNote.swift */; };
 		0EFF763A265F74130043F49D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF7639265F74130043F49D /* RoundedTextField.swift */; };
 		0EFF763D265F7EC30043F49D /* NewEatNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */; };
+		0EFF76432660D1B60043F49D /* EatNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF76412660D1B60043F49D /* EatNote.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		0EF4DF6F265A879000C13481 /* EatNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNote.swift; sourceTree = "<group>"; };
 		0EFF7639265F74130043F49D /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEatNoteController.swift; sourceTree = "<group>"; };
+		0EFF76422660D1B60043F49D /* EatNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EatNote.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		0E5536F9265A25630044E5F3 = {
 			isa = PBXGroup;
 			children = (
+				0EFF76412660D1B60043F49D /* EatNote.xcdatamodeld */,
 				0E553704265A25630044E5F3 /* EatNote */,
 				0E553703265A25630044E5F3 /* Products */,
 				0E74646A265CEA1D00542914 /* Frameworks */,
@@ -245,6 +248,7 @@
 				0E553706265A25630044E5F3 /* AppDelegate.swift in Sources */,
 				0E746468265CE29300542914 /* UIColor+Ext.swift in Sources */,
 				0E74645D265BC6D400542914 /* EatNoteDetailIAddressCell.swift in Sources */,
+				0EFF76432660D1B60043F49D /* EatNote.xcdatamodeld in Sources */,
 				0E55371D265A271B0044E5F3 /* EatNoteTableViewController.swift in Sources */,
 				0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */,
 				0EFF763A265F74130043F49D /* RoundedTextField.swift in Sources */,
@@ -453,6 +457,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0EFF76412660D1B60043F49D /* EatNote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0EFF76422660D1B60043F49D /* EatNote.xcdatamodel */,
+			);
+			currentVersion = 0EFF76422660D1B60043F49D /* EatNote.xcdatamodel */;
+			path = EatNote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0E5536FA265A25630044E5F3 /* Project object */;
 }

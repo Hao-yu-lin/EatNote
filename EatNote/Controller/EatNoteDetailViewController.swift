@@ -10,11 +10,12 @@ import MapKit
 
 class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var eatnote = EatNote()
-    
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: EatNoteDetailHeaderView!
+    
+    //var eatnote = EatNote()
+    var eatnote: EatNoteModel!
 
     // MARK: - phone call & navigation
     
@@ -39,12 +40,13 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         
         
-        let callAction = UIAlertAction(title: "Call : " + eatnote.phone ,style: .default, handler: callActionHandler)
+        let callAction = UIAlertAction(title: "Call : " + eatnote.phone! ,style: .default, handler: callActionHandler)
         optionMenu.addAction(callAction)
         
         let shareAction = UIAlertAction(title: "Share phone number", style: .default, handler: {
             (action:UIAlertAction!) -> Void in
-            let defaultText = self.eatnote.name + ":" + self.eatnote.phone
+            
+            let defaultText = self.eatnote.name! + ":" + self.eatnote.phone!
             
             let activityController: UIActivityViewController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
             self.present(activityController, animated: true, completion: nil)
@@ -69,10 +71,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         var lat = String()
         var lon = String()
         
-        var optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
         
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(self.eatnote.location + self.eatnote.address, completionHandler: {(placemarks:[CLPlacemark]!,error:Error!) in
+        geoCoder.geocodeAddressString(self.eatnote.location! + self.eatnote.address!, completionHandler: {(placemarks:[CLPlacemark]!,error:Error!) in
             if error != nil{
                 print(error!)
                 return
@@ -129,7 +131,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         let shareAction = UIAlertAction(title: "Share Address", style: .default, handler: {
             (action:UIAlertAction!) -> Void in
-            let defaultText = self.eatnote.name + ":" + self.eatnote.location + self.eatnote.address
+            let defaultText = self.eatnote.name! + ":" + self.eatnote.location! + self.eatnote.address!
             
             let activityController: UIActivityViewController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
             self.present(activityController, animated: true, completion: nil)
@@ -154,7 +156,11 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         navigationItem.largeTitleDisplayMode = .never
         
         headerView.typeLabel.text = eatnote.type
-        headerView.headerImageView.image = UIImage(named: eatnote.name)
+//        headerView.headerImageView.image = UIImage(named: eatnote.name)
+        if let eatnotImage = eatnote.image{
+            headerView.headerImageView.image = UIImage(data: eatnotImage as Data)
+        }
+        
         headerView.checkImageView.isHidden = (eatnote.isVisited) ? false : true
         
         
@@ -172,7 +178,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
        
         tableView.contentInsetAdjustmentBehavior = .always
         
-        // tap gesture
+        // Display rating
+        if let rating = eatnote.rating {
+            headerView.ratingImageView.image = UIImage(named: rating)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -212,14 +221,14 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailIAddressCell.self), for: indexPath) as! EatNoteDetailIAddressCell
             cell.iconImageView.image = UIImage(systemName: "map")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-            cell.shortTextLabel.text = eatnote.location + eatnote.address
+            cell.shortTextLabel.text = eatnote.location! + eatnote.address!
             cell.selectionStyle = .none
             
             return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailTextCell.self), for: indexPath) as! EatNoteDetailTextCell
-            cell.descriptionLabel.text = eatnote.description
+            cell.commentLabel.text = eatnote.comment
             cell.selectionStyle = .none
             
             return cell
@@ -227,9 +236,13 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailMapCell.self), for: indexPath) as! EatNoteDetailMapCell
-            //let addr = eatnote.location + eatnote.address
-            cell.configure(location: eatnote.location + eatnote.address)
             
+//            cell.configure(location: eatnote.location + eatnote.address)
+            if let eatnoteLocation = eatnote.location{
+                if let eatnoteAddress = eatnote.address{
+                    cell.configure(location: eatnoteLocation + eatnoteAddress)
+                }
+            }
             
             return cell
         
@@ -258,6 +271,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
                 self.eatnote.rating = rating
 
                 self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate){
+                    appDelegate.saveContext()
+                }
                 
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform

@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
-class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
+    var eatnote: EatNoteModel!
+    
     @IBOutlet var NameTextField: RoundedTextField!{
         didSet{
             NameTextField.tag = 1
-            //NameTextField.becomeFirstResponder()
+            NameTextField.becomeFirstResponder()
             NameTextField.delegate = self
         }
     }
@@ -45,15 +48,17 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
         }
     }
     
-    @IBOutlet var DescriptionTextView: UITextView!{
+    @IBOutlet var CommentTextView: UITextView!{
         didSet{
-            DescriptionTextView.tag = 6
-            DescriptionTextView.layer.cornerRadius = 5.0
-            DescriptionTextView.layer.masksToBounds = true
+            CommentTextView.tag = 6
+            CommentTextView.layer.cornerRadius = 5.0
+            CommentTextView.layer.masksToBounds = true
         }
     }
     
     @IBOutlet var photoImageView: UIImageView!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +75,8 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
         tableView.separatorStyle = .none
         
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
-               self.view.addGestureRecognizer(tap) // to Replace "TouchesBegan"
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+//               self.view.addGestureRecognizer(tap) // to Replace "TouchesBegan"
 
     }
     
@@ -85,17 +90,19 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
         
         return true
     }
-    
-    @objc func dismissKeyBoard() {
-        self.view.endEditing(true)
-    }
+//
+//    @objc func dismissKeyBoard() {
+//        self.view.endEditing(true)
+//    }
     
     
     // MARK: - UITableViewDelegate methods
     
     // Camera && Photo library
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 0{
+            
             let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
             
             // Camera
@@ -110,6 +117,7 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
                     self.present(imagePicker, animated: true, completion: nil)
                 }
             })
+            photoSourceRequestController.addAction(cameraAction)
             
             // Photo Library
             let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default, handler: { (action) in
@@ -123,9 +131,11 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
                 }
             })
             
+            photoSourceRequestController.addAction(photoLibraryAction)
+            
             // Cancel
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
+            photoSourceRequestController.addAction(cancelAction)
             // For iPad
             if let popoverController = photoSourceRequestController.popoverPresentationController {
                 if let cell = tableView.cellForRow(at: indexPath) {
@@ -134,12 +144,8 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
                 }
             }
             
-            
-            photoSourceRequestController.addAction(cameraAction)
-            photoSourceRequestController.addAction(photoLibraryAction)
-            photoSourceRequestController.addAction(cancelAction)
-            
             present(photoSourceRequestController, animated: true, completion: nil)
+            
         }
     }
     
@@ -180,13 +186,25 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
             return
         }
         
-        print("Name: \(NameTextField.text ?? "")")
-        print("Type: \(TypeTextField.text ?? "")")
-        print("Location: \(LocationTextField.text ?? "")")
-        print("Address: \(AddressTextField.text ?? "")")
-       
-        print("Phone: \(PhoneTextField.text ?? "")")
-        print("Description: \(DescriptionTextView.text ?? "")")
+                
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            eatnote = EatNoteModel(context: appDelegate.persistentContainer.viewContext)
+            eatnote.name = NameTextField.text
+            eatnote.type = (TypeTextField.text == "") ? "None" : TypeTextField.text
+            eatnote.location = LocationTextField.text
+            eatnote.address = AddressTextField.text
+            eatnote.phone = PhoneTextField.text
+            eatnote.comment = CommentTextView.text
+            eatnote.isVisited = false
+            
+            if let eatnoteImage = photoImageView.image {
+                eatnote.image = eatnoteImage.pngData()
+            }
+            
+            print("Saving data to context ...")
+            appDelegate.saveContext()
+        }
         
         dismiss(animated: true, completion: nil)
     }

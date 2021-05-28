@@ -6,25 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
-class EatNoteTableViewController: UITableViewController {
+class EatNoteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate{
     
     // MARK: - Data source
     
     
-    var EatNotes:[EatNote] = [
-        EatNote(name: "咖啡嗜者", type: "咖啡", location: "台北市",address: "大安區雲和街72巷1號1樓", image: "咖啡嗜者", isVisited: false, phone: "0223675123", description: "A大師咖啡"),
-        EatNote(name: "虎咖啡", type: "咖啡", location: "宜蘭縣",address:"宜蘭市國榮路104號", image: "虎咖啡", isVisited: false, phone: "039312104", description: "虎咖啡吃鬆餅 喝義式咖啡"),
-        EatNote(name: "Mars coffee", type: "咖啡", location: "台北市",address: "文山區辛亥路四段235號", image: "Mars coffee", isVisited: false, phone: "0286638080", description: "大學回憶錄"),
-        EatNote(name: "cafe sodavid", type: "咖啡", location: "宜蘭縣",address: "羅東鎮中華路255號", image: "cafe sodavid", isVisited: false, phone: "0920652053", description: "手沖很好喝，都是衣索比亞豆"),
-        EatNote(name: "黑米", type: "餐點", location: "台北市",address: "文山區羅斯福路五段269巷16號", image: "黑米", isVisited: false, phone: "0286638008", description: "好吃的義大利麵店，需要訂位"),
-        EatNote(name: "Terra", type: "甜點", location: "台北市",address: "大安區溫州街7號", image: "Terra", isVisited: false, phone: "0223636355", description: "巧克力專賣店"),
-        EatNote(name: "吳一無二法式甜點", type: "甜點", location: "台北市",address: "大安區安和路二段184巷6號", image: "吳一無二法式甜點", isVisited: false, phone: "0227371707", description: "好吃的法式甜點"),
-        EatNote(name: "TaSweet", type: "甜點", location: "宜蘭縣",address: "羅東鎮四維路10號", image: "TaSweet", isVisited: false, phone: "039565906", description: "羅東有名的蛋糕捲店"),
-    ]
-
+//    var EatNotes:[EatNote] = [
+//        EatNote(name: "咖啡嗜者", type: "咖啡", location: "台北市",address: "大安區雲和街72巷1號1樓", image: "咖啡嗜者", isVisited: false, phone: "0223675123", comment: "A大師咖啡"),
+//        EatNote(name: "虎咖啡", type: "咖啡", location: "宜蘭縣",address:"宜蘭市國榮路104號", image: "虎咖啡", isVisited: false, phone: "039312104", comment: "虎咖啡吃鬆餅 喝義式咖啡"),
+//        EatNote(name: "Mars coffee", type: "咖啡", location: "台北市",address: "文山區辛亥路四段235號", image: "Mars coffee", isVisited: false, phone: "0286638080", comment: "大學回憶錄"),
+//        EatNote(name: "cafe sodavid", type: "咖啡", location: "宜蘭縣",address: "羅東鎮中華路255號", image: "cafe sodavid", isVisited: false, phone: "0920652053", comment: "手沖很好喝，都是衣索比亞豆"),
+//        EatNote(name: "黑米", type: "餐點", location: "台北市",address: "文山區羅斯福路五段269巷16號", image: "黑米", isVisited: false, phone: "0286638008", comment: "好吃的義大利麵店，需要訂位"),
+//        EatNote(name: "Terra", type: "甜點", location: "台北市",address: "大安區溫州街7號", image: "Terra", isVisited: false, phone: "0223636355", comment: "巧克力專賣店"),
+//        EatNote(name: "吳一無二法式甜點", type: "甜點", location: "台北市",address: "大安區安和路二段184巷6號", image: "吳一無二法式甜點", isVisited: false, phone: "0227371707", comment: "好吃的法式甜點"),
+//        EatNote(name: "TaSweet", type: "甜點", location: "宜蘭縣",address: "羅東鎮四維路10號", image: "TaSweet", isVisited: false, phone: "039565906", comment: "羅東有名的蛋糕捲店"),
+//    ]
     
-    
+    var EatNotes: [EatNoteModel] = []
+    var fetchResultController: NSFetchedResultsController<EatNoteModel>!
     
     // MARK: - View controller life cycle
     override func viewDidLoad() {
@@ -42,6 +43,26 @@ class EatNoteTableViewController: UITableViewController {
         // hidebars
         navigationController?.hidesBarsOnSwipe = true
         
+        // Fetch data from data store
+        let fetchRequest: NSFetchRequest<EatNoteModel> = EatNoteModel.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "location", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    EatNotes = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
+        }
+
         
         
     }
@@ -71,7 +92,10 @@ class EatNoteTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.nameLabel.text = EatNotes[indexPath.row].name
-        cell.thumbnailImageView.image = UIImage(named: EatNotes[indexPath.row].image)
+
+        if let eatnotetImage = EatNotes[indexPath.row].image {
+            cell.thumbnailImageView.image = UIImage(data: eatnotetImage as Data)
+        }
         cell.locationLabel.text = EatNotes[indexPath.row].location
         cell.typeLabel.text = EatNotes[indexPath.row].type
         cell.checkImageView.isHidden = !self.EatNotes[indexPath.row].isVisited
@@ -91,19 +115,27 @@ class EatNoteTableViewController: UITableViewController {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){
             (action, sourceView, completionHandler) in
             
-            self.EatNotes.remove(at: indexPath.row)
+            // Delete the row from the data store
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let eatnoteToDelete = self.fetchResultController.object(at: indexPath)
+                context.delete(eatnoteToDelete)
+                
+                appDelegate.saveContext()
+            }
             
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
+            // Call completion handler with true to indicate
             completionHandler(true)
         }
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "Just checking in at " + self.EatNotes[indexPath.row].name
+            let defaultText = "Just checking in at " + self.EatNotes[indexPath.row].name!
             
             let activityController: UIActivityViewController
             
-            if let imageToShare = UIImage(named: self.EatNotes[indexPath.row].image) {
+//            if let imageToShare = UIImage(named: self.EatNotes[indexPath.row].image)
+            if let eatnoteImage = self.EatNotes[indexPath.row].image,
+                let imageToShare = UIImage(data: eatnoteImage as Data){
                 activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
             } else  {
                 activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
@@ -162,6 +194,44 @@ class EatNoteTableViewController: UITableViewController {
     
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - NSFetchedResultsControllerDelegate methods
+    
+    // ready update
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    // updating
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            EatNotes = fetchedObjects as! [EatNoteModel]
+        }
+    }
+    
+    // finish and display
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
     
 
