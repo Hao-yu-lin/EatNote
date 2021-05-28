@@ -21,7 +21,6 @@
 		0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */; };
 		0E746468265CE29300542914 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746467265CE29300542914 /* UIColor+Ext.swift */; };
 		0E74646C265CEA1D00542914 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E74646B265CEA1D00542914 /* MapKit.framework */; };
-		0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */; };
 		0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */; };
 		0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */; };
 		0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */; };
@@ -47,7 +46,6 @@
 		0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailNameCell.swift; sourceTree = "<group>"; };
 		0E746467265CE29300542914 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		0E74646B265CEA1D00542914 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailMapCell.swift; sourceTree = "<group>"; };
 		0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailPhoneCell.swift; sourceTree = "<group>"; };
 		0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				0E74645C265BC6D400542914 /* EatNoteDetailIAddressCell.swift */,
 				0E74645F265BC88000542914 /* EatNoteDetailTextCell.swift */,
 				0E746462265BD01B00542914 /* EatNoteDetailNameCell.swift */,
-				0E74646E265CEE5800542914 /* EatNoteDetailSeparatorCell.swift */,
 				0E746471265CEEEC00542914 /* EatNoteDetailMapCell.swift */,
 				0E746479265D28A900542914 /* EatNoteDetailPhoneCell.swift */,
 			);
@@ -241,7 +238,6 @@
 			files = (
 				0E746460265BC88000542914 /* EatNoteDetailTextCell.swift in Sources */,
 				0E32ADDD265B9450004154C6 /* EatNoteDetailViewController.swift in Sources */,
-				0E74646F265CEE5800542914 /* EatNoteDetailSeparatorCell.swift in Sources */,
 				0E9CF23E265E04EC0056D6A1 /* RateViewController.swift in Sources */,
 				0E746472265CEEEC00542914 /* EatNoteDetailMapCell.swift in Sources */,
 				0EFF763D265F7EC30043F49D /* NewEatNoteController.swift in Sources */,

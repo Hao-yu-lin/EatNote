@@ -12,7 +12,7 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
     @IBOutlet var NameTextField: RoundedTextField!{
         didSet{
             NameTextField.tag = 1
-            NameTextField.becomeFirstResponder()
+            //NameTextField.becomeFirstResponder()
             NameTextField.delegate = self
         }
     }
@@ -68,6 +68,10 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
         
         // Disable the separator
         tableView.separatorStyle = .none
+        
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+               self.view.addGestureRecognizer(tap) // to Replace "TouchesBegan"
 
     }
     
@@ -80,6 +84,10 @@ class NewEatNoteController: UITableViewController, UITextFieldDelegate, UIImageP
         }
         
         return true
+    }
+    
+    @objc func dismissKeyBoard() {
+        self.view.endEditing(true)
     }
     
     

@@ -62,6 +62,9 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
+    
+    // navigation
+
     @IBAction func navigationMapApp(sender: UIButton) {
         var lat = String()
         var lon = String()
@@ -163,8 +166,10 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         // Configure the navigation bar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor(red: 68, green: 86, blue: 245)
+       
         tableView.contentInsetAdjustmentBehavior = .always
         
         // tap gesture
@@ -183,7 +188,7 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     // cell control
@@ -219,13 +224,8 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             
             return cell
             
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailSeparatorCell.self), for: indexPath) as! EatNoteDetailSeparatorCell
-            cell.titleLabel.text = "HOW TO GET HERE"
-            cell.selectionStyle = .none
-            return cell
             
-        case 5:
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteDetailMapCell.self), for: indexPath) as! EatNoteDetailMapCell
             //let addr = eatnote.location + eatnote.address
             cell.configure(location: eatnote.location + eatnote.address)

@@ -36,13 +36,12 @@ class EatNoteTableViewController: UITableViewController {
         // Configure the navigation bar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        if let customFont = UIFont(name: "Helvetica Neue Medium", size: 40.0){
+        if let customFont = UIFont(name: "Helvetica Neue Medium", size: 30.0){
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedString.Key.font: customFont]
         }
-        
-        
         // hidebars
         navigationController?.hidesBarsOnSwipe = true
+        
         
         
     }
