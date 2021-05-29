@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class EatNoteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate{
+class EatNoteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating{
     
     // MARK: - Data source
     
@@ -26,6 +26,9 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
     
     var EatNotes: [EatNoteModel] = []
     var fetchResultController: NSFetchedResultsController<EatNoteModel>!
+    
+    var searchController: UISearchController!
+    var searchResults: [EatNoteModel] = []
     
     // MARK: - View controller life cycle
     override func viewDidLoad() {
@@ -62,9 +65,18 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
                 print(error)
             }
         }
-
         
+        // Search controller
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        // UISearchbar
+        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
         
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +93,11 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // return the number of rows in section
-        return EatNotes.count
+        if searchController.isActive{
+            return searchResults.count
+        }else{
+            return EatNotes.count
+        }
     }
 
     
@@ -90,15 +105,18 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EatNoteTableViewCell.self), for: indexPath) as! EatNoteTableViewCell
         
+        let eatnote = (searchController.isActive) ? searchResults[indexPath.row] : EatNotes[indexPath.row]
+        
+        
         // Configure the cell...
-        cell.nameLabel.text = EatNotes[indexPath.row].name
+        cell.nameLabel.text = eatnote.name
 
-        if let eatnotetImage = EatNotes[indexPath.row].image {
+        if let eatnotetImage = eatnote.image {
             cell.thumbnailImageView.image = UIImage(data: eatnotetImage as Data)
         }
-        cell.locationLabel.text = EatNotes[indexPath.row].location
-        cell.typeLabel.text = EatNotes[indexPath.row].type
-        cell.checkImageView.isHidden = !self.EatNotes[indexPath.row].isVisited
+        cell.locationLabel.text = eatnote.location
+        cell.typeLabel.text = eatnote.type
+        cell.checkImageView.isHidden = eatnote.isVisited ? false : true
         
         return cell
     }
@@ -187,7 +205,8 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
         if segue.identifier == "showEatNoteDetail"{
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destinationController = segue.destination as! EatNoteDetailViewController
-                destinationController.eatnote = EatNotes[indexPath.row]
+                //destinationController.eatnote = EatNotes[indexPath.row]
+                destinationController.eatnote = (searchController.isActive) ? searchResults[indexPath.row] : EatNotes[indexPath.row]
             }
         }
     }
@@ -233,6 +252,32 @@ class EatNoteTableViewController: UITableViewController, NSFetchedResultsControl
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+    // MARK: - Search bar
+    func filterContent(for searchText: String) {
+        
+        searchResults = EatNotes.filter({ (eatnote) -> Bool in
+            if let name = eatnote.name,
+                let location = eatnote.location,
+                let type = eatnote.type{
+                
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText) || type.localizedCaseInsensitiveContains(searchText)
+                
+                return isMatch
+            }
+            
+            return false
+        })
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
+
     
 
 }
