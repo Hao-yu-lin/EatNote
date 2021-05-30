@@ -679,6 +679,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="mapView" destination="7Ar-vt-cdf" id="gGd-HP-75b"/>
+                                    <segue destination="EeT-9E-joN" kind="show" identifier="showMap" id="RwK-aJ-hpe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -801,6 +802,48 @@
             </objects>
             <point key="canvasLocation" x="1343.4782608695652" y="-559.15178571428567"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="3Rw-JC-xhB">
+            <objects>
+                <viewController id="EeT-9E-joN" customClass="MapViewController" customModule="EatNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IqS-hw-PRi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bG2-FU-ILQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3l-P0-6RC">
+                                <rect key="frame" x="337" y="840" width="57" height="22"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="GO !" image="paperplane.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigation2MapAppWithSender:" destination="EeT-9E-joN" eventType="touchDown" id="jl3-SO-ZGg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3yd-Y9-wCR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bG2-FU-ILQ" firstAttribute="trailing" secondItem="3yd-Y9-wCR" secondAttribute="trailing" id="818-zd-QA8"/>
+                            <constraint firstItem="3yd-Y9-wCR" firstAttribute="trailing" secondItem="h3l-P0-6RC" secondAttribute="trailing" constant="20" id="cLS-Ul-pvs"/>
+                            <constraint firstAttribute="bottom" secondItem="bG2-FU-ILQ" secondAttribute="bottom" id="dXi-LP-nAW"/>
+                            <constraint firstItem="bG2-FU-ILQ" firstAttribute="leading" secondItem="3yd-Y9-wCR" secondAttribute="leading" id="tqZ-ge-j6T"/>
+                            <constraint firstItem="h3l-P0-6RC" firstAttribute="bottom" secondItem="3yd-Y9-wCR" secondAttribute="bottom" id="xax-7U-whH"/>
+                            <constraint firstItem="bG2-FU-ILQ" firstAttribute="top" secondItem="IqS-hw-PRi" secondAttribute="top" id="y3P-m2-KfY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nlM-Ha-CMS"/>
+                    <connections>
+                        <outlet property="mapView" destination="bG2-FU-ILQ" id="vps-nd-WQ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rc9-hK-yZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828.98550724637687" y="197.54464285714286"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CC1-7d-BfV">
             <objects>
@@ -811,6 +854,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BE0-pl-ZCn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="OVm-ne-dhX" kind="relationship" relationship="rootViewController" id="CUf-Ih-ira"/>
                     </connections>
@@ -850,6 +896,7 @@
         <image name="background" width="414" height="350"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
+        <image name="paperplane.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star0" width="574" height="130"/>
@@ -874,6 +921,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0D98642663B22B00F85BA0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D98632663B22B00F85BA0 /* MapViewController.swift */; };
 		0E32ADD4265B924E004154C6 /* EatNoteDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32ADD3265B924E004154C6 /* EatNoteDetailHeaderView.swift */; };
 		0E32ADDD265B9450004154C6 /* EatNoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32ADDC265B9450004154C6 /* EatNoteDetailViewController.swift */; };
 		0E553706265A25630044E5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E553705265A25630044E5F3 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0D98632663B22B00F85BA0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0E32ADD3265B924E004154C6 /* EatNoteDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailHeaderView.swift; sourceTree = "<group>"; };
 		0E32ADDC265B9450004154C6 /* EatNoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatNoteDetailViewController.swift; sourceTree = "<group>"; };
 		0E553702265A25630044E5F3 /* EatNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				0E32ADDC265B9450004154C6 /* EatNoteDetailViewController.swift */,
 				0E9CF23D265E04EC0056D6A1 /* RateViewController.swift */,
 				0EFF763C265F7EC30043F49D /* NewEatNoteController.swift */,
+				0E0D98632663B22B00F85BA0 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				0E55371D265A271B0044E5F3 /* EatNoteTableViewController.swift in Sources */,
 				0E746463265BD01B00542914 /* EatNoteDetailNameCell.swift in Sources */,
 				0EFF763A265F74130043F49D /* RoundedTextField.swift in Sources */,
+				0E0D98642663B22B00F85BA0 /* MapViewController.swift in Sources */,
 				0EF4DF70265A879000C13481 /* EatNote.swift in Sources */,
 				0E32ADD4265B924E004154C6 /* EatNoteDetailHeaderView.swift in Sources */,
 				0E74647A265D28A900542914 /* EatNoteDetailPhoneCell.swift in Sources */,

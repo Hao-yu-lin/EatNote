@@ -258,11 +258,17 @@ class EatNoteDetailViewController: UIViewController, UITableViewDataSource, UITa
             let destinationController = segue.destination as! RateViewController
             destinationController.eatnote = eatnote
         }
+        
+        if segue.identifier == "showMap"{
+            let destinationController = segue.destination as! MapViewController
+            destinationController.eatnote = eatnote
+        }
     }
     
     @IBAction func close(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     
     @IBAction func rateEatNote(segue: UIStoryboardSegue){
